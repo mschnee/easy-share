@@ -47,5 +47,6 @@
   "testExplorer.gutterDecoration": true,
   "mochaExplorer.files": "packages/**/*.test.ts",
   "mochaExplorer.nodeArgv": ["--enable-source-maps", "--loader=tsx"],
-  "mochaExplorer.timeout": 0
+  "mochaExplorer.timeout": 0,
+  "vitest.include": ["frontent/src/**/*.{spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"]
 }
