@@ -1,8 +1,0 @@
-{
-  "extends": "@tsconfig/node20/tsconfig.json",
-  "compilerOptions": {
-    "composite": true
-  },
-  "files": [],
-  "exclude": ["node_modules", "**/*/lib", "**/*/dist"]
-}

@@ -1,6 +1,8 @@
 import Express from 'express';
-import {logger} from './lib/logging';
+import {logger} from './lib/logging.js';
+
 const PORT = process.env['BASE_PORT'] ?? 40081;
+
 const app = Express();
 
 app.listen(PORT, () => {
