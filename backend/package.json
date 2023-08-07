@@ -1,6 +1,7 @@
 {
   "name": "@mschnee/easy-share-backend",
   "version": "0.0.1",
+  "type": "module",
   "devDependencies": {
     "@tsconfig/esm": "^1.0.4",
     "@tsconfig/node20": "^20.1.1",
@@ -34,6 +35,10 @@
     "prisma:deploy": "prisma migrate deploy --schema src/prisma/postgres/postgres.prisma",
     "prisma:reset": "run-s \"prisma:reset:*\"",
     "prisma:reset:mongo": "prisma migrate reset --schema src/prisma/mongodb/mongodb.prisma",
-    "prisma:reset:postgres": "prisma migrate reset --schema src/prisma/postgres/postgres.prisma"
+    "prisma:reset:postgres": "prisma migrate reset --schema src/prisma/postgres/postgres.prisma",
+    "test": "npm run test:unit",
+    "test:cov": "npm run test:unit:cov",
+    "test:unit": "mocha --loader=tsx \"src/**/*.unit.test.ts\"",
+    "test:unit:cov": "c8 npm run test"
   }
 }
