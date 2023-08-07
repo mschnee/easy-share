@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.1.1",
+    "axios": "^1.4.0",
     "dotenv-cli": "^7.2.1",
     "express": "^4.18.2",
     "mongo": "^0.1.0",
@@ -25,7 +26,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "tsx src/main.ts",
+    "start": "tsx src/index.ts",
     "prisma:generate": "run-s \"prisma:generate:*\"",
     "prisma:generate:mongo": "prisma generate --schema src/prisma/mongodb/mongodb.prisma",
     "prisma:generate:postgres": "prisma generate --schema src/prisma/postgres/postgres.prisma",
@@ -34,11 +35,13 @@
     "prisma:migrate:dev:postgres": "prisma migrate dev --schema src/prisma/postgres/postgres.prisma",
     "prisma:deploy": "prisma migrate deploy --schema src/prisma/postgres/postgres.prisma",
     "prisma:reset": "run-s \"prisma:reset:*\"",
-    "prisma:reset:mongo": "prisma migrate reset --schema src/prisma/mongodb/mongodb.prisma",
-    "prisma:reset:postgres": "prisma migrate reset --schema src/prisma/postgres/postgres.prisma",
-    "test": "npm run test:unit",
-    "test:cov": "npm run test:unit:cov",
+    "prisma:reset:mongo": "dotenv -e test.env -- tsx src/reset-mongo.ts",
+    "prisma:reset:postgres": "dotenv -e test.env -- prisma migrate reset --schema src/prisma/postgres/postgres.prisma",
+    "test": "dotenv -e test.env -- run-s test:unit test:it",
+    "test:cov": "dotenv -e test.env -- run-s test:unit:cov test:it:cov",
+    "test:it": "mocha --loader=tsx --require src/fixtures.ts \"src/**/*.it.test.ts\"",
+    "test:it:cov": "c8 npm run test:it",
     "test:unit": "mocha --loader=tsx \"src/**/*.unit.test.ts\"",
-    "test:unit:cov": "c8 npm run test"
+    "test:unit:cov": "c8 npm run test:unit"
   }
 }

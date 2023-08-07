@@ -3,14 +3,18 @@ import {logger} from './lib/logging.js';
 import {mongoClient} from './prisma/mongodb.js';
 import {postgresClient} from './prisma/postgres.js';
 
-const PORT = process.env['BASE_PORT'] ?? 40081;
+export async function main() {
+  const PORT = process.env['BASE_PORT'] ?? 40081;
 
-async function main() {
   const app = Express();
 
   await Promise.all([postgresClient.$connect(), mongoClient.$connect()]);
 
-  app.listen(PORT, () => {
+  app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+  });
+
+  const server = app.listen(PORT, () => {
     logger.info(`Listening on port ${PORT}`);
   });
 
@@ -18,12 +22,7 @@ async function main() {
   const docCount = await mongoClient.userPost.count();
   logger.info(`Identity count: ${icount}`);
   logger.info(`Document count: ${docCount}`);
-}
 
-main()
-  .then(() => {
-    logger.info('Application started');
-  })
-  .catch(e => {
-    logger.error(e);
-  });
+  logger.info('Application started');
+  return server;
+}

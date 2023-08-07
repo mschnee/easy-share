@@ -19,7 +19,12 @@
     "prettier:docs": "prettier \"**/*.md\"",
     "prettier:docs:check": "npm run prettier:docs -- --check",
     "prettier:docs:fix": "npm run prettier:docs -- --write",
-    "lint:commit": "commitlint --edit"
+    "lint:commit": "commitlint --edit",
+    "test:init": "run-s test:compose:up",
+    "test:stop": "run-s test:compose:stop",
+    "test:reset": "npm run prisma:reset -w backend",
+    "test:compose:up": "nerdctl compose -f compose.yml up -d",
+    "test:compose:stop": "nerdctl compose -f compose.yml stop"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,8 @@
 {
-    "vitest.enable": false,
-    
+  "vitest.enable": false,
+  "mochaExplorer.logpanel": true,
+  "mochaExplorer.files": "src/**/*.test.ts",
+  "mochaExplorer.nodeArgv": ["--enable-source-maps", "--loader=tsx"],
+  "mochaExplorer.timeout": 0,
+  "mochaExplorer.autoload": true
 }

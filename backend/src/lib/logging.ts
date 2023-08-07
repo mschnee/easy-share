@@ -8,7 +8,6 @@ export const logger = createLogger({
       format: format.combine(
         format.colorize({all: true}),
         format.padLevels(),
-        format.errors({stack: true}),
         consoleFormat({
           showMeta: true,
           metaStrip: ['timestamp', 'service'],

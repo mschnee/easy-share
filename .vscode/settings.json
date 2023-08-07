@@ -42,12 +42,9 @@
     "shims.d.ts": "*.d.ts",
     "tsconfig.json": "tsconfig.*.json"
   },
-  "mochaExplorer.logpanel": true,
   "testExplorer.codeLens": true,
   "testExplorer.gutterDecoration": true,
-  "mochaExplorer.files": "backend/src/**/*.test.ts",
-  "mochaExplorer.nodeArgv": ["--enable-source-maps", "--loader=tsx"],
-  "mochaExplorer.timeout": 0,
+  "mochaExplorer.autoload": false,
   "vitest.commandLine": "npm run test -w frontend --",
   "vitest.include": ["frontend/src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"]
 }
