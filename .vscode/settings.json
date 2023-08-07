@@ -48,5 +48,5 @@
   "mochaExplorer.files": "packages/**/*.test.ts",
   "mochaExplorer.nodeArgv": ["--enable-source-maps", "--loader=tsx"],
   "mochaExplorer.timeout": 0,
-  "vitest.include": ["frontent/src/**/*.{spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"]
+  "vitest.commandLine": "npm run test -w frontend --"
 }
