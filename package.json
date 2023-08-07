@@ -1,0 +1,47 @@
+{
+  "name": "@mschnee/easy-share",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A simple Backend/Frontend monorepo for sharing code.",
+  "main": "dist/index.js",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "lint": "npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "eslint": "eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "prettier:cli": "prettier \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
+    "prettier:check": "npm run prettier:cli -- --check",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "prettier:docs": "prettier \"**/*.md\"",
+    "prettier:docs:check": "npm run prettier:docs -- --check",
+    "prettier:docs:fix": "npm run prettier:docs -- --write",
+    "lint:commit": "commitlint --edit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mschnee/easy-share.git"
+  },
+  "keywords": [],
+  "author": "i.am@matthew.engineer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mschnee/easy-share/issues"
+  },
+  "homepage": "https://github.com/mschnee/easy-share#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@tsconfig/node20": "^20.1.1",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "^8.46.0",
+    "husky": "^8.0.3",
+    "rimraf": "^5.0.1",
+    "tsx": "^3.12.7",
+    "typescript": "5.1.6"
+  }
+}

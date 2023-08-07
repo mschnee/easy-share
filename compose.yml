@@ -1,0 +1,19 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - '40082:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: easyshare
+      MONGO_INITDB_ROOT_PASSWORD: asdfasdf
+  postgres:
+    image: postgres
+    ports:
+      - '40083:5432'
+    environment:
+      POSTGRES_USER: easyshare
+      POSTGRES_PASSWORD: asdfasdf
+  redis:
+    image: redis
+    ports:
+      - '40084:6379'
